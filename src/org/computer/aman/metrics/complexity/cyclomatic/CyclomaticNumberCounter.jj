@@ -47,7 +47,7 @@ import java.io.*;
  */
 public class CyclomaticNumberCounter
 {
-   static int count = 0;
+   private int count = 0;
 
    /**
     * Class to hold modifiers.
@@ -149,7 +149,7 @@ public class CyclomaticNumberCounter
 
     CyclomaticNumberCounter parser;
     String fileName = null;
-    
+
     if (args.length == 0) {
       System.err.println("Reading from standard input . . .");
       fileName = "(standard input)";
@@ -170,18 +170,23 @@ public class CyclomaticNumberCounter
 			return;
       }
     }
-    
+
     try {
-      System.err.println("====================================================================");      
+      System.err.println("====================================================================");
       parser.CompilationUnit();
       System.err.println("The cyclomatic number is counted successfully.");
-      System.out.println(fileName + "," + (count + 1));
-      System.err.println("====================================================================");      
+      System.out.println(fileName + "," + parser.getCyclomaticNumber());
+      System.err.println("====================================================================");
     }
     catch (ParseException e) {
       System.err.println(e.getMessage());
       System.err.println("***  Encountered errors during parse.");
     }
+  }
+
+  public int getCyclomaticNumber()
+  {
+    return this.count+1;
   }
 }
 
