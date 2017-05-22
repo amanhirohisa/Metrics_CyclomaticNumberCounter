@@ -47,8 +47,6 @@ import java.io.*;
  */
 public class CyclomaticNumberCounter
 {
-   private int count = 0;
-
    /**
     * Class to hold modifiers.
     */
@@ -143,8 +141,8 @@ public class CyclomaticNumberCounter
 
   public static void main(String args[])
   {
-    System.err.println("CyclomaticNumberCounter ver.0.11 ");
-    System.err.println("(C) 2012 Hirohisa AMAN <aman@computer.org>, Shinya INOUE <shinya@hpc.cs.ehime-u.ac.jp>");
+    System.err.println("CyclomaticNumberCounter ver.0.2 ");
+    System.err.println("(C) 2012, 2017 Hirohisa AMAN <aman@computer.org>, Shinya INOUE, Sho SUZUKI");
 	System.err.println("This is developed based on JavaCC example code, JavaParser to parse Java version 1.5 (by Sreenivasa Viswanadha)");
 
     CyclomaticNumberCounter parser;
@@ -175,7 +173,7 @@ public class CyclomaticNumberCounter
       System.err.println("====================================================================");
       parser.CompilationUnit();
       System.err.println("The cyclomatic number is counted successfully.");
-      System.out.println(fileName + "," + parser.getCyclomaticNumber());
+      System.out.println(fileName + "," + parser.getValue());
       System.err.println("====================================================================");
     }
     catch (ParseException e) {
@@ -184,10 +182,13 @@ public class CyclomaticNumberCounter
     }
   }
 
-  public int getCyclomaticNumber()
+  public int getValue()
   {
-    return this.count+1;
+    return count+1;
   }
+
+   private int count = 0;
+  
 }
 
 PARSER_END(CyclomaticNumberCounter)
